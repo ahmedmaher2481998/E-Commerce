@@ -5,8 +5,8 @@ import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { links } from "../utils/constants";
 import CartButtons from "./CartButtons";
-// import { useProductsContext } from "../context/products_context";
-// import { useUserContext } from "../context/user_context";
+import { useProductsContext } from "../context/products_context";
+import { useUserContext } from "../context/user_context";
 
 const Nav = () => {
 	return (
@@ -16,7 +16,7 @@ const Nav = () => {
 					<Link to={"/"}>
 						<img src={logo} alt='Comfy Sloth' />
 					</Link>
-					<button className='nav-toggle'>
+					<button onClick={() => {}} className='nav-toggle'>
 						<FaBars />
 					</button>
 				</div>

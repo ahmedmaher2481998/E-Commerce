@@ -13,20 +13,28 @@ const products_reducer = (state, action) => {
 	switch (action.type) {
 		case SIDEBAR_OPEN:
 			return { ...state, isSidebarOpen: true };
+
 		case SIDEBAR_CLOSE:
 			return { ...state, isSidebarOpen: false };
+
 		case GET_PRODUCTS_BEGIN:
 			return { ...state };
+
 		case GET_PRODUCTS_SUCCESS:
 			return { ...state };
+
 		case GET_PRODUCTS_ERROR:
 			return { ...state };
+
 		case GET_SINGLE_PRODUCT_BEGIN:
 			return { ...state };
+
 		case GET_SINGLE_PRODUCT_SUCCESS:
 			return { ...state };
+
 		case GET_SINGLE_PRODUCT_ERROR:
 			return { ...state };
+
 		default:
 			return state;
 	}
