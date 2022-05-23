@@ -9,20 +9,20 @@ import CartButtons from "./CartButtons";
 import { useUserContext } from "../context/user_context";
 
 const Sidebar = () => {
-	const [isOpen, setisOpen] = useState(false);
+	const { closeSidebar, isSidebarOpen } = useProductsContext();
 	return (
 		<>
 			<SidebarContainer>
 				<aside
 					className={` ${
-						isOpen ? "sidebar show-sidebar" : "sidebar"
+						isSidebarOpen ? "sidebar show-sidebar" : "sidebar"
 					} `}
 				>
 					<div className='sidebar-header'>
 						<img src={logo} className='logo' alt='ComfySloth' />
 						<button
+							onClick={closeSidebar}
 							className='close-btn'
-							onClick={() => setisOpen((pre) => !pre)}
 							type='button'
 						>
 							<FaTimes />
@@ -32,14 +32,20 @@ const Sidebar = () => {
 						{links.map(({ id, text, url }) => {
 							return (
 								<li>
-									<Link to={url} key={id}>
+									<Link
+										onClick={closeSidebar}
+										to={url}
+										key={id}
+									>
 										{text}
 									</Link>
 								</li>
 							);
 						})}
 						<li>
-							<Link to={"/checkout"}>checkout'</Link>
+							<Link onClick={closeSidebar} to={"/checkout"}>
+								checkout'
+							</Link>
 						</li>
 					</ul>
 					<CartButtons />
