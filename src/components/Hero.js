@@ -4,16 +4,8 @@ import { Link } from "react-router-dom";
 import heroBcg from "../assets/hero-bcg.jpeg";
 import heroBcg2 from "../assets/hero-bcg-2.jpeg";
 
-const Hero = ({ title }) => {
-	return (
-		<Wrapper>
-			<div className='section-center section'>
-				<h3>
-					<Link to={"/"}>Home</Link>/{title}
-				</h3>
-			</div>
-		</Wrapper>
-	);
+const Hero = () => {
+	return <h1>hero</h1>;
 };
 
 const Wrapper = styled.section`
