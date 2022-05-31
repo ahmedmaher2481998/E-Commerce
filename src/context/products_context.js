@@ -19,6 +19,9 @@ const initialState = {
 	error: false,
 	products: [],
 	featured_products: [],
+	single_product_loading: false,
+	single_product_error: false,
+	single_product: {},
 };
 
 const ProductsContext = React.createContext();
@@ -47,7 +50,20 @@ export const ProductsProvider = ({ children }) => {
 			// console.log(response.data);
 		}
 	};
+	const getSingleProducts = async (url) => {
+		try {
+			dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
+			const response = await fetch(url);
+
+			dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: response });
+		} catch {
+			dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
+		}
+	};
 	useEffect(() => {
+		getSingleProducts(
+			"https://course-api.com/react-store-single-product?id=recrfxv3EwpvJwvjq"
+		);
 		getProducts(url);
 	}, []);
 	return (

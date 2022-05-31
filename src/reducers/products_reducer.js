@@ -35,13 +35,25 @@ const products_reducer = (state, action) => {
 			return { ...state, error: false, loading: false };
 
 		case GET_SINGLE_PRODUCT_BEGIN:
-			return { ...state };
+			return {
+				...state,
+				single_product_loading: true,
+				single_product_error: false,
+			};
 
 		case GET_SINGLE_PRODUCT_SUCCESS:
-			return { ...state };
+			return {
+				...state,
+				single_product_loading: false,
+				single_product: payload,
+			};
 
 		case GET_SINGLE_PRODUCT_ERROR:
-			return { ...state };
+			return {
+				...state,
+				single_product_loading: false,
+				single_product_error: true,
+			};
 
 		default:
 			return state;
