@@ -6,7 +6,7 @@ const ErrorPage = () => {
 		<Wrapper>
 			<section className='page-100'>
 				<h1>404</h1>
-				<h3>Sorry, This page can't be found ! </h3>
+				<h3>Sorry, This page can't be found !</h3>
 				<Link to={"/"}>
 					<button className='btn'>Back Hmoe</button>
 				</Link>
