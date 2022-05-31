@@ -1,14 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { useForm, ValidationError } from "@formspree/react";
+import { useHistory } from "react-router-dom";
 const Contact = () => {
-	const [state, handleSubmit] = useForm("xgeddoyb");
-	if (state.succeeded) {
-		alert("Thanks for Joinig us ");
-	}
+	const history = useHistory();
 	return (
 		<Wrapper>
-			<div className='section-cente'>
+			<div className='section-center'>
 				<h3>Join our newsletter and get 20% off </h3>
 				<div className='content'>
 					<p>
@@ -17,18 +14,16 @@ const Contact = () => {
 						voluptatibus aliquid dolorem similique consequatur atque
 						autem saepe cumque, ipsa ipsum!
 					</p>
-					<form className='contact-form' onSubmit={handleSubmit}>
+					<form
+						className='contact-form'
+						action='https://formspree.io/f/xgeddoyb'
+						method='POST'
+					>
 						<input
 							type='email'
 							className='form-input'
 							placeholder='Enter Your Email'
-							name='email'
-						/>
-						{/* this is a formspree component   */}
-						<ValidationError
-							prefix='Email'
-							field='email'
-							errors={state.errors}
+							name='email-address'
 						/>
 						<btn type='submit' className='submit-btn'>
 							Submit
