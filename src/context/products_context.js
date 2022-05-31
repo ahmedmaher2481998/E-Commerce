@@ -43,32 +43,36 @@ export const ProductsProvider = ({ children }) => {
 			dispatch({ type: GET_PRODUCTS_BEGIN });
 			const response = await axios.get(url);
 			const products = response.data;
-			console.log(products);
 			dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products });
 		} catch {
 			dispatch({ type: GET_PRODUCTS_ERROR });
-			// console.log(response.data);
 		}
 	};
 	const getSingleProducts = async (url) => {
 		try {
 			dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
-			const response = await fetch(url);
-
-			dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: response });
+			const response = await axios.get(url);
+			const product = response.data;
+			dispatch({
+				type: GET_SINGLE_PRODUCT_SUCCESS,
+				payload: product,
+			});
 		} catch {
 			dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
 		}
 	};
 	useEffect(() => {
-		getSingleProducts(
-			"https://course-api.com/react-store-single-product?id=recrfxv3EwpvJwvjq"
-		);
 		getProducts(url);
 	}, []);
 	return (
 		<ProductsContext.Provider
-			value={{ ...state, openSidebar, closeSidebar, dispatch }}
+			value={{
+				...state,
+				openSidebar,
+				closeSidebar,
+				dispatch,
+				getSingleProducts,
+			}}
 		>
 			{children}
 		</ProductsContext.Provider>

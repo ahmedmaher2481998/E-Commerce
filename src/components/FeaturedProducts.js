@@ -21,7 +21,6 @@ const FeaturedProducts = () => {
 				<div className='underline'></div>
 			</div>
 			<div className='section-center featured'>
-				{console.log("this is the f p ", featured_products)}
 				{featured_products.slice(0, 3).map((p) => {
 					return <Product key={p.id} {...p} />;
 				})}
