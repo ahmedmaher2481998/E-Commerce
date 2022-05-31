@@ -13,21 +13,39 @@ import {
 	GET_SINGLE_PRODUCT_ERROR,
 } from "../actions";
 
-const initialState = { isSidebarOpen: false };
+const initialState = {
+	isSidebarOpen: false,
+	loading: false,
+	error: false,
+	products: [],
+	featured_products: {},
+};
 
 const ProductsContext = React.createContext();
 
 export const ProductsProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
+	//changing the state of the sidebar open/close
 	const openSidebar = () => {
 		dispatch({ type: SIDEBAR_OPEN });
 	};
 	const closeSidebar = () => {
 		dispatch({ type: SIDEBAR_CLOSE });
 	};
+
+	//fetching the products from the end point
+
 	const getProducts = async (url) => {
-		const response = await axios.get(url);
-		console.log(response.data);
+		try {
+			dispatch({ type: GET_PRODUCTS_BEGIN });
+			const response = await axios.get(url);
+			const products = response.data;
+			console.log(products);
+			dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products });
+		} catch {
+			dispatch({ type: GET_PRODUCTS_ERROR });
+			// console.log(response.data);
+		}
 	};
 	useEffect(() => {
 		getProducts(url);
