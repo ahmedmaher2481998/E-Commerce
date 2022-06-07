@@ -8,30 +8,50 @@ import { products_url } from "../utils/constants";
 import Product from "./Product";
 
 const AddToCart = ({ product }) => {
-	console.log(product);
 	const { id, stock, colors } = product;
 	const [mainColor, setMainColor] = useState(colors[0]);
+	const [amount, setAmount] = useState(1);
+	const increase = () => {
+		setAmount((old) => {
+			let newAmount = old + 1;
+			return newAmount > stock ? stock : newAmount;
+		});
+	};
+	const decrease = () => {
+		setAmount((old) => {
+			let newAmount = old - 1;
+			return newAmount < 1 ? 1 : newAmount;
+		});
+	};
 	return (
 		<Wrapper>
 			<div className='colors'>
 				<span>Colors: </span>
 				<div>
-					{colors.map((c) => {
+					{colors.map((color, i) => {
 						return (
 							<button
-								style={{ backroundColor: c }}
-								onClick={() => setMainColor(c)}
-								className={`colot-btn ${
-									mainColor === c ? "active" : ""
+								key={i}
+								style={{ backgroundColor: color }}
+								onClick={() => setMainColor(color)}
+								className={`color-btn ${
+									mainColor === color ? "active" : null
 								}`}
 							>
-								{mainColor === c ? <FaCheck /> : ""}
+								{mainColor === color ? <FaCheck /> : null}
 							</button>
 						);
 					})}
 				</div>
 			</div>
-			<div className='btn-container'></div>
+			<div className='btn-container'>
+				<AmountButtons
+					amount={amount}
+					decrease={decrease}
+					increase={increase}
+				/>
+				<button className='btn'>Addt To Cart</button>
+			</div>
 		</Wrapper>
 	);
 };
