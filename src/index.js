@@ -11,7 +11,9 @@ const Root = () => {
 	return (
 		<>
 			<ProductsProvider>
-				<App />
+				<FilterProvider>
+					<App />
+				</FilterProvider>
 			</ProductsProvider>
 		</>
 	);
