@@ -1,21 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useFilterContext } from "../context/filter_context";
 import { BsFillGridFill, BsList } from "react-icons/bs";
 import styled from "styled-components";
+
 const Sort = () => {
-	const { filtered_products, grdiView } = useFilterContext();
+	const {
+		filtered_products,
+		gridView,
+		upadteSort,
+		sort,
+		setGridView,
+		setListView,
+	} = useFilterContext();
+
+	useEffect(() => {}, []);
 	return (
 		<Wrapper>
 			<div className='btn-container'>
 				<button
 					type='button'
-					className={` ${grdiView ? "actitive" : null}`}
+					className={` ${gridView ? "active" : null}`}
+					onClick={setGridView}
 				>
 					<BsFillGridFill />
 				</button>
 				<button
 					type='button'
-					className={` ${grdiView ? null : "active"}`}
+					className={` ${!gridView ? "active" : null}`}
+					onClick={setListView}
 				>
 					<BsList />
 				</button>
@@ -24,7 +36,13 @@ const Sort = () => {
 			<hr />
 			<form>
 				<label htmlFor='sort'> Sort by: &nbsp; </label>
-				<select name='sort' id='sort' className='sort-input'>
+				<select
+					name='sort'
+					id='sort'
+					onChange={upadteSort}
+					value={sort}
+					className='sort-input'
+				>
 					<option value='price-lowest'>price (lowest)</option>
 					<option value='price-highest'>price (highest)</option>
 					<option value='name-a'>name (a-z)</option>
