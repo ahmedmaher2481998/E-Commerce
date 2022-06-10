@@ -1,3 +1,4 @@
+import { GiBrokenSkull } from "react-icons/gi";
 import {
 	LOAD_PRODUCTS,
 	SET_LISTVIEW,
@@ -28,7 +29,28 @@ const filter_reducer = (state, { type, payload }) => {
 			newState.sort = payload;
 			return newState;
 		case SORT_PRODUCTS:
-			return newState;
+			switch (state.sort) {
+				case "name-a":
+					newState.filtered_products =
+						newState.filtered_products.sort();
+					return newState;
+				case "name-z":
+					newState.filtered_products = newState.filtered_products
+						.sort()
+						.reverse();
+					return newState;
+				case "price-lowest":
+					newState.filtered_products =
+						newState.filtered_products.sort(
+							(a, b) => a.price - b.price
+						);
+					return newState;
+				case "price-higest":
+					newState.filtered_products = newState.filtered_products
+						.sort((a, b) => a.price - b.price)
+						.reverse();
+					return newState;
+			}
 	}
 	throw new Error(`No Matching "${type}" - action type`);
 };

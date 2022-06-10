@@ -22,11 +22,8 @@ const initialState = {
 const FilterContext = React.createContext();
 export const FilterProvider = ({ children }) => {
 	const { products } = useProductsContext();
-	useEffect(() => {
-		dispatch({ type: LOAD_PRODUCTS, payload: products });
-	}, [products]);
-
 	const [state, dispatch] = useReducer(reducer, initialState);
+
 	const setGridView = () => {
 		dispatch({ type: SET_GRIDVIEW });
 	};
@@ -38,8 +35,15 @@ export const FilterProvider = ({ children }) => {
 		const name = e.target.name;
 		const value = e.target.value;
 		dispatch({ type: UPDATE_SORT, payload: value });
-		dispatch({ type: SORT_PRODUCTS, payload: value });
 	};
+
+	useEffect(() => {
+		dispatch({ type: LOAD_PRODUCTS, payload: products });
+	}, [products]);
+	useEffect(() => {
+		dispatch({ type: SORT_PRODUCTS });
+	}, [products, state.sort]);
+
 	return (
 		<FilterContext.Provider
 			value={{ ...state, setGridView, setListView, upadteSort }}
