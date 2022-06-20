@@ -17,6 +17,16 @@ const initialState = {
 	all_products: [],
 	gridView: false,
 	sort: "name-a",
+	filters: {
+		text: "",
+		company: "all",
+		catagory: "all",
+		color: "all",
+		minPrice: 0,
+		maxPrice: 0,
+		price: 0,
+		shipping: false,
+	},
 };
 
 const FilterContext = React.createContext();
