@@ -25,6 +25,10 @@ const filter_reducer = (state, { type, payload }) => {
 		case SET_GRIDVIEW:
 			newState.gridView = true;
 			return newState;
+		case UPDATE_FILTERS:
+			const { name, value } = payload;
+			newState.filters[name] = value;
+			return newState;
 		case SET_LISTVIEW:
 			newState.gridView = false;
 			return newState;
@@ -57,6 +61,8 @@ const filter_reducer = (state, { type, payload }) => {
 
 					break;
 			}
+			return newState;
+		case FILTER_PRODUCTS:
 			return newState;
 	}
 	throw new Error(`No Matching "${type}" - action type`);
