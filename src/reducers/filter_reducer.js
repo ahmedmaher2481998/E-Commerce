@@ -33,12 +33,12 @@ const filter_reducer = (state, { type, payload }) => {
 			switch (state.sort) {
 				case "name-a":
 					newState.filtered_products = newFilterProducts.sort(
-						(a, b) => a.name.localCompare(b.name)
+						(a, b) => a.name.localeCompare(b.name)
 					);
 					break;
 				case "name-z":
 					newState.filtered_products = newFilterProducts.sort(
-						(a, b) => b.name.localCompare(a.name)
+						(a, b) => b.name.localeCompare(a.name)
 					);
 
 					break;

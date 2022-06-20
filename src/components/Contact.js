@@ -25,9 +25,9 @@ const Contact = () => {
 							placeholder='Enter Your Email'
 							name='email-address'
 						/>
-						<btn type='submit' className='submit-btn'>
+						<button type='submit' className='submit-btn'>
 							Submit
-						</btn>
+						</button>
 					</form>
 				</div>
 			</div>
