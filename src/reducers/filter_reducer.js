@@ -87,34 +87,24 @@ const filter_reducer = (state, { type, payload }) => {
 			} = filters;
 			let temp = [...all_products];
 			if (text !== "") {
-				temp = temp.filter((p) => {
-					return p.name.toLowerCase().startsWith(text);
-				});
+				temp = temp.filter((p) =>
+					p.name.toLowerCase().startsWith(text)
+				);
 			}
 			if (company !== "all") {
-				temp = temp.filter((p) => {
-					return p.company === company;
-				});
+				temp = temp.filter((p) => p.company === company);
 			}
 			if (category !== "all") {
-				temp = temp.filter((p) => {
-					return p.category === category;
-				});
+				temp = temp.filter((p) => p.category === category);
 			}
 			if (shipping) {
-				temp = temp.filter((p) => {
-					return p.shipping;
-				});
+				temp = temp.filter((p) => p.shipping);
 			}
 			if (color !== "all") {
-				temp = temp.filter((p) => {
-					return p.colors.includes(color);
-				});
+				temp = temp.filter((p) => p.colors.includes(color));
 			}
 			if (price != maxPrice) {
-				temp = temp.filter((p) => {
-					return p.price < price;
-				});
+				temp = temp.filter((p) => p.price < price);
 			}
 			newState.filtered_products = [...temp];
 			return newState;
