@@ -103,9 +103,13 @@ const filter_reducer = (state, { type, payload }) => {
 			if (color !== "all") {
 				temp = temp.filter((p) => p.colors.includes(color));
 			}
+<<<<<<< HEAD
 			if (price != maxPrice) {
 				temp = temp.filter((p) => p.price < price);
 			}
+=======
+			temp = temp.filter((p) => p.price <= price);
+>>>>>>> dev
 			newState.filtered_products = [...temp];
 			return newState;
 	}

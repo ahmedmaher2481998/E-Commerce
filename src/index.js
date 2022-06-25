@@ -12,7 +12,9 @@ const Root = () => {
 		<>
 			<ProductsProvider>
 				<FilterProvider>
-					<App />
+					<CartProvider>
+						<App />
+					</CartProvider>
 				</FilterProvider>
 			</ProductsProvider>
 		</>
