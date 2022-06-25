@@ -63,13 +63,63 @@ const filter_reducer = (state, { type, payload }) => {
 			}
 			return newState;
 		case CLEAR_FILTERS:
-			console.log(payload);
-			newState.filters = { ...payload };
+			newState.filters = {
+				...newState.filters,
+				text: "",
+				company: "all",
+				category: "all",
+				color: "all",
+				price: newState.filters.maxPrice,
+				shipping: false,
+			};
+			return newState;
 
 		case FILTER_PRODUCTS:
-			return newState;
+			const { all_products, filters } = newState;
+			const {
+				text,
+				company,
+				category,
+				color,
+				maxPrice,
+				price,
+				shipping,
+			} = filters;
+			let temp = [...all_products];
+			if (text !== "") {
+				temp = temp.filter((p) => {
+					return p.name.toLowerCase().startsWith(text);
+				});
+			}
+			if (company !== "all") {
+				temp = temp.filter((p) => {
+					return p.company === company;
+				});
+			}
+			if (category !== "all") {
+				temp = temp.filter((p) => {
+					return p.category === category;
+				});
+			}
+			if (shipping) {
+				temp = temp.filter((p) => {
+					return p.shipping;
+				});
+			}
+			if (color !== "all") {
+				temp = temp.filter((p) => {
+					return p.colors.includes(color);
+				});
+			}
+			if (price != maxPrice) {
+				temp = temp.filter((p) => {
+					return p.price > price;
+				});
+			}
 	}
-	throw new Error(`No Matching "${type}" - action type`);
+
+	newState.filtered_products = [...temp];
+	return newState;
 };
 
 export default filter_reducer;
