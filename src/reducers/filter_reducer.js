@@ -113,13 +113,12 @@ const filter_reducer = (state, { type, payload }) => {
 			}
 			if (price != maxPrice) {
 				temp = temp.filter((p) => {
-					return p.price > price;
+					return p.price < price;
 				});
 			}
+			newState.filtered_products = [...temp];
+			return newState;
 	}
-
-	newState.filtered_products = [...temp];
-	return newState;
 };
 
 export default filter_reducer;
