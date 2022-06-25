@@ -28,7 +28,7 @@ const Filters = () => {
 		<Wrapper>
 			<div className='content'>
 				<form onSubmit={(e) => e.preventDefault()}>
-					{/* searc input  */}
+					{/* search input  */}
 					<div className='forn-control'>
 						<input
 							type='text'
@@ -82,6 +82,69 @@ const Filters = () => {
 							</select>
 						</div>
 						{/* end of company*/}
+						{/* start of colors  */}
+						<div className='form-control'>
+							<h5>Colors</h5>
+							<div className='colors'>
+								{colors.map((c, index) => {
+									console.log(c);
+									return c === "all" ? (
+										<button
+											key={index}
+											name='color'
+											data-color='all'
+											onClick={updateFilters}
+											className={`${
+												color === "all"
+													? "all-btn active"
+													: "all-btn"
+											}`}
+											style={{ backgroundColor: `${c}` }}
+										>
+											All
+										</button>
+									) : (
+										<button
+											key={index}
+											name='color'
+											data-color={c}
+											onClick={updateFilters}
+											className='color-btn'
+											style={{ backgroundColor: `${c}` }}
+										>
+											{color === c ? <FaCheck /> : null}
+										</button>
+									);
+								})}
+							</div>
+						</div>
+						{/* end of colors  */}
+						{/* start price  */}
+						<div className='form-control'>
+							<h5>Price</h5>
+							<p className='price'>{formatPrice(price)}</p>
+							<input
+								type='range'
+								name='price'
+								onChange={updateFilters}
+								min={minPice}
+								max={maxPrice}
+								value={price}
+							/>
+						</div>
+						{/* end price  */}
+						{/* shipping start */}
+						<div className='form-control shipping'>
+							<label htmlFor='shipping'>Free shipping</label>
+							<input
+								type='checkbox'
+								name='shipping'
+								id='shipping'
+								onChange={updateFilters}
+								checked={shipping}
+							/>
+						</div>
+						{/* shipping end */}
 					</div>
 				</form>
 			</div>

@@ -58,6 +58,8 @@ export const FilterProvider = ({ children }) => {
 		let name = e.target.name;
 		let value = e.target.value;
 		if (name === "category") value = e.target.textContent;
+		else if (name === "color") value = e.target.dataset.color;
+		else if (name === "price") value = +value;
 		dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
 	};
 	const clearFilters = () => {};
