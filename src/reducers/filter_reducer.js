@@ -62,6 +62,10 @@ const filter_reducer = (state, { type, payload }) => {
 					break;
 			}
 			return newState;
+		case CLEAR_FILTERS:
+			console.log(payload);
+			newState.filters = { ...payload };
+
 		case FILTER_PRODUCTS:
 			return newState;
 	}

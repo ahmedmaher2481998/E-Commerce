@@ -87,7 +87,6 @@ const Filters = () => {
 							<h5>Colors</h5>
 							<div className='colors'>
 								{colors.map((c, index) => {
-									console.log(c);
 									return c === "all" ? (
 										<button
 											key={index}
@@ -147,6 +146,13 @@ const Filters = () => {
 						{/* shipping end */}
 					</div>
 				</form>
+				<button
+					type='button '
+					className='clear-btn'
+					onClick={clearFilters}
+				>
+					Clear filters
+				</button>
 			</div>
 		</Wrapper>
 	);
