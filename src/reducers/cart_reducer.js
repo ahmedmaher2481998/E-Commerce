@@ -13,7 +13,16 @@ const cart_reducer = (state, { type, payload }) => {
 			const { id, color, amount, product } = payload;
 			let tempItme = newState.cart.find((i) => i.id == id + color);
 			if (tempItme) {
-				alert("needs to be implemented ");
+				const tempCart = newState.cart.map((i) => {
+					if (i.id === id + color) {
+						let newAmount = i.amount + amount;
+						if (newAmount > i.max) {
+							newAmount = i.max;
+						}
+						return i;
+					} else return i;
+				});
+				newState.cart = [...tempCart];
 			} else {
 				const newItem = {
 					id: id + color,
@@ -28,7 +37,7 @@ const cart_reducer = (state, { type, payload }) => {
 			}
 			return newState;
 	}
-	throw new Error(`No Matching "${action.type}" - action type`);
+	throw new Error(`No Matching "${type}" - action type`);
 };
 
 export default cart_reducer;

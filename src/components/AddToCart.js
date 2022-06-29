@@ -9,9 +9,12 @@ import Product from "./Product";
 
 const AddToCart = ({ product }) => {
 	const { id, stock, colors } = product;
+
 	const { addToCart } = useCartContext();
+
 	const [mainColor, setMainColor] = useState(colors[0]);
 	const [amount, setAmount] = useState(1);
+
 	const increase = () => {
 		setAmount((old) => {
 			let newAmount = old + 1;
@@ -24,6 +27,7 @@ const AddToCart = ({ product }) => {
 			return newAmount < 1 ? 1 : newAmount;
 		});
 	};
+
 	return (
 		<Wrapper>
 			<div className='colors'>

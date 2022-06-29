@@ -30,8 +30,14 @@ export const CartProvider = ({ children }) => {
 			},
 		});
 	};
+
+	const removeItme = (id) => {};
+
+	const toggleAmount = (id, value) => {};
+
+	const cleaCart = () => {};
 	return (
-		<CartContext.Provider value={{ ...state, dispatch }}>
+		<CartContext.Provider value={{ ...state, addToCart, dispatch }}>
 			{children}
 		</CartContext.Provider>
 	);
