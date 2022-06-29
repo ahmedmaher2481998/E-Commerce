@@ -44,13 +44,15 @@ export const CartProvider = ({ children }) => {
 
 	const toggleAmount = (id, value) => {};
 
-	const cleaCart = () => {};
+	const clearCart = () => {};
 
 	useEffect(() => {
 		localStorage.setItem("cart", JSON.stringify(state.cart));
 	}, [state]);
 	return (
-		<CartContext.Provider value={{ ...state, addToCart, dispatch }}>
+		<CartContext.Provider
+			value={{ ...state, addToCart, clearCart, dispatch }}
+		>
 			{children}
 		</CartContext.Provider>
 	);

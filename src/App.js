@@ -41,6 +41,7 @@ function App() {
 						path='/products/:id'
 						children={<SingleProduct />}
 					/>
+					<Route exact path='/checkout' children={<Checkout />} />
 
 					<Route exact path='*'>
 						<Error />
