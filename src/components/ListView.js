@@ -17,7 +17,7 @@ const ListView = ({ products }) => {
 
 						<p>{description.substring(0, 150)}...</p>
 
-						<Link to={"/product/" + id} className='btn'>
+						<Link to={"/products/" + id} className='btn'>
 							details
 						</Link>
 					</article>

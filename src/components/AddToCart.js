@@ -55,14 +55,15 @@ const AddToCart = ({ product }) => {
 					decrease={decrease}
 					increase={increase}
 				/>
-				<button
+				<Link
+					to={"/cart"}
 					className='btn'
 					onClick={() => {
 						addToCart(id, mainColor, amount, product);
 					}}
 				>
 					Addt To Cart
-				</button>
+				</Link>
 			</div>
 		</Wrapper>
 	);

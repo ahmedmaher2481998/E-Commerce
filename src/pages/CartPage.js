@@ -21,7 +21,9 @@ const CartPage = () => {
 	return (
 		<main>
 			<PageHero title={"cart"} />
-			<CartContent />
+			<Wrapper className='page'>
+				<CartContent />
+			</Wrapper>
 		</main>
 	);
 };
