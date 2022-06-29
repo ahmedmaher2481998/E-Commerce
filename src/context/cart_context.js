@@ -40,18 +40,29 @@ export const CartProvider = ({ children }) => {
 		});
 	};
 
-	const removeItme = (id) => {};
+	const removeItem = (id) => {
+		dispatch({ type: REMOVE_CART_ITEM, payload: { id } });
+	};
 
 	const toggleAmount = (id, value) => {};
 
-	const clearCart = () => {};
+	const clearCart = () => {
+		dispatch({ type: CLEAR_CART });
+	};
 
 	useEffect(() => {
 		localStorage.setItem("cart", JSON.stringify(state.cart));
 	}, [state]);
 	return (
 		<CartContext.Provider
-			value={{ ...state, addToCart, clearCart, dispatch }}
+			value={{
+				...state,
+				addToCart,
+				toggleAmount,
+				removeItem,
+				clearCart,
+				dispatch,
+			}}
 		>
 			{children}
 		</CartContext.Provider>
