@@ -19,7 +19,6 @@ const generatStarsArray = (rate = 0) => {
 			stars.push(<BsStarFill key={i} />);
 		} else if (i - 0.5 <= rate) stars.push(<BsStarHalf key={i} />);
 		else stars.push(<BsStar key={i} />);
-		console.log(rate);
 	}
 	return stars;
 };

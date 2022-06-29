@@ -19,7 +19,6 @@ import { Link } from "react-router-dom";
 
 const SingleProductPage = () => {
 	//consts
-
 	const { id } = useParams("id");
 	const history = useHistory();
 	const {
@@ -31,8 +30,6 @@ const SingleProductPage = () => {
 	useEffect(() => {
 		let myUrl = `${single_product_url}${id}`;
 		getSingleProducts(myUrl);
-		console.log(myUrl);
-		console.log(product);
 	}, [id]);
 
 	//automatically redirect to home page
