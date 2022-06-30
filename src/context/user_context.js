@@ -8,10 +8,6 @@ export const UserProvider = ({ children }) => {
 	const [myUser, setMyUser] = useState(null);
 	const [a, seta] = useState(0);
 	useEffect(() => {
-		console.log("user", user);
-		console.log("isAuthaticated", isAuthenticated);
-		console.log("isloading", isLoading);
-		console.log("**************");
 		if (isAuthenticated) setMyUser(user);
 		else setMyUser(null);
 	}, [isAuthenticated]);
