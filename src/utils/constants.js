@@ -7,14 +7,14 @@ export const links = [
 		url: "/",
 	},
 	{
-		id: 2,
-		text: "about",
-		url: "/about",
-	},
-	{
 		id: 3,
 		text: "products",
 		url: "/products",
+	},
+	{
+		id: 2,
+		text: "about",
+		url: "/about",
 	},
 ];
 

@@ -65,6 +65,19 @@ const cart_reducer = (state, { type, payload }) => {
 				} else return item;
 			});
 			return newState;
+		case COUNT_CART_TOTALS:
+			const { totalAmount, totalItems } = newState.cart.reduce(
+				(total, item) => {
+					const { price, amount } = item;
+					total.totalAmount += price * amount;
+					total.totalItems += amount;
+					return total;
+				},
+				{ totalAmount: 0, totalItems: 0 }
+			);
+			newState.totalAmount = totalAmount;
+			newState.totalItems = totalItems;
+			return newState;
 	}
 	throw new Error(`No Matching "${type}" - action type`);
 };
