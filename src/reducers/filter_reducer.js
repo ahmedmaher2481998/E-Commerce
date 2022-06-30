@@ -76,7 +76,15 @@ const filter_reducer = (state, { type, payload }) => {
 
 		case FILTER_PRODUCTS:
 			const { all_products, filters } = newState;
-			const { text, company, category, color, price, shipping } = filters;
+			const {
+				text,
+				company,
+				category,
+				color,
+				maxPrice,
+				price,
+				shipping,
+			} = filters;
 			let temp = [...all_products];
 			if (text !== "") {
 				temp = temp.filter((p) =>
@@ -95,13 +103,9 @@ const filter_reducer = (state, { type, payload }) => {
 			if (color !== "all") {
 				temp = temp.filter((p) => p.colors.includes(color));
 			}
-<<<<<<< HEAD
-			if (price != maxPrice) {
+			if (price !== maxPrice) {
 				temp = temp.filter((p) => p.price < price);
 			}
-=======
-			temp = temp.filter((p) => p.price <= price);
->>>>>>> dev
 			newState.filtered_products = [...temp];
 			return newState;
 		default:
