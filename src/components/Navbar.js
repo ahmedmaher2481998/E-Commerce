@@ -10,6 +10,8 @@ import { useUserContext } from "../context/user_context";
 
 const Nav = () => {
 	const { openSidebar } = useProductsContext();
+	const { isAuthenticated } = useUserContext();
+
 	return (
 		<NavStyled>
 			<div className='nav-center'>
@@ -25,11 +27,16 @@ const Nav = () => {
 					{links.map((link) => {
 						const { id, text, url } = link;
 						return (
-							<Link to={url} key={id}>
-								{text}
-							</Link>
+							<li key={id}>
+								<Link to={url}>{text}</Link>
+							</li>
 						);
 					})}
+					{isAuthenticated ? (
+						<li>
+							<Link to='/checkout'>Checkout</Link>
+						</li>
+					) : null}
 				</ul>
 				<CartButtons />
 			</div>

@@ -59,8 +59,9 @@ export const CartProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
+		dispatch({ type: COUNT_CART_TOTALS });
 		localStorage.setItem("cart", JSON.stringify(state.cart));
-	}, [state]);
+	}, [state.cart]);
 	return (
 		<CartContext.Provider
 			value={{
@@ -69,7 +70,6 @@ export const CartProvider = ({ children }) => {
 				toggleAmount,
 				removeItem,
 				clearCart,
-				dispatch,
 			}}
 		>
 			{children}

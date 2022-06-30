@@ -11,7 +11,7 @@ const cart_reducer = (state, { type, payload }) => {
 	switch (type) {
 		case ADD_TO_CART:
 			const { id, color, amount, product } = payload;
-			let tempItme = newState.cart.find((i) => i.id == id + color);
+			let tempItme = newState.cart.find((i) => i.id === id + color);
 			if (tempItme) {
 				const tempCart = newState.cart.map((i) => {
 					if (i.id === id + color) {
@@ -62,11 +62,26 @@ const cart_reducer = (state, { type, payload }) => {
 						item.amount = newAmount;
 						return item;
 					}
-				} else return item;
+				}
+				return item;
 			});
 			return newState;
+		case COUNT_CART_TOTALS:
+			const { totalAmount, totalItems } = newState.cart.reduce(
+				(total, item) => {
+					const { price, amount } = item;
+					total.totalAmount += price * amount;
+					total.totalItems += amount;
+					return total;
+				},
+				{ totalAmount: 0, totalItems: 0 }
+			);
+			newState.totalAmount = totalAmount;
+			newState.totalItems = totalItems;
+			return newState;
+		default:
+			return newState;
 	}
-	throw new Error(`No Matching "${type}" - action type`);
 };
 
 export default cart_reducer;

@@ -5,7 +5,7 @@ const ProductImages = ({ images = [{ url: "" }] }) => {
 	const [activeImg, setActiveImg] = useState(images[0]);
 	return (
 		<Wrapper>
-			<img src={activeImg.url} alt='main image' className='main' />
+			<img src={activeImg.url} alt='main pic' className='main' />
 			<div className='gallery'>
 				{images.map((image, index) => {
 					return (

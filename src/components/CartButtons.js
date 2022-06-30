@@ -8,18 +8,40 @@ import { useUserContext } from "../context/user_context";
 
 const CartButtons = () => {
 	const { closeSidebar } = useProductsContext();
+	const { totalItems } = useCartContext();
+	const { loginWithRedirect, isAuthenticated, logout } = useUserContext();
+
 	return (
 		<Wrapper className='cart-btn-wrapper'>
 			<Link onClick={closeSidebar} to='/cart' className='cart-btn'>
 				Cart
 				<span className='cart-container'>
 					<FaShoppingCart />
-					<span className='cart-value'>11</span>
+					<span className='cart-value'>{totalItems}</span>
 				</span>
 			</Link>
-			<button type='button' className='auth-btn'>
-				Login <FaUserPlus />
-			</button>
+			{/* toggle user Login/Logout based on is Auth */}
+			{!isAuthenticated ? (
+				<button
+					onClick={loginWithRedirect}
+					type='button'
+					className='auth-btn'
+				>
+					LogIn <FaUserPlus />
+				</button>
+			) : (
+				<button
+					onClick={() =>
+						logout({
+							returnTo: window.location.origin,
+						})
+					}
+					type='button'
+					className='auth-btn'
+				>
+					LogOut <FaUserMinus />
+				</button>
+			)}
 		</Wrapper>
 	);
 };

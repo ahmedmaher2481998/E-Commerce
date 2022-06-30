@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useProductsContext } from "../context/products_context";
-import {
-	single_product_url,
-	single_product_url as url,
-} from "../utils/constants";
+import { single_product_url } from "../utils/constants";
 import { formatPrice } from "../utils/helpers";
 import {
 	Loading,
@@ -30,7 +27,7 @@ const SingleProductPage = () => {
 	useEffect(() => {
 		let myUrl = `${single_product_url}${id}`;
 		getSingleProducts(myUrl);
-	}, [id]);
+	}, [id, getSingleProducts]);
 
 	//automatically redirect to home page
 	useEffect(() => {
@@ -39,7 +36,7 @@ const SingleProductPage = () => {
 			a = setTimeout(history.push("/"));
 		}
 		return clearTimeout(a);
-	}, [error]);
+	}, [error, history]);
 
 	//checking for the succes of the ajax call
 	if (loading) return <Loading />;

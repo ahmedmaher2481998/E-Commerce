@@ -11,11 +11,12 @@ import {
 	SingleProduct,
 	About,
 	Cart,
+	AuthWrapper,
 } from "./pages";
 
 function App() {
 	return (
-		<>
+		<AuthWrapper>
 			<Router>
 				<Navbar />
 				<Sidebar />
@@ -41,7 +42,9 @@ function App() {
 						path='/products/:id'
 						children={<SingleProduct />}
 					/>
-					<Route exact path='/checkout' children={<Checkout />} />
+					<PrivateRoute exact path='/checkout'>
+						<Checkout />
+					</PrivateRoute>
 
 					<Route exact path='*'>
 						<Error />
@@ -50,7 +53,7 @@ function App() {
 
 				<Footer />
 			</Router>
-		</>
+		</AuthWrapper>
 	);
 }
 
