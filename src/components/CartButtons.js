@@ -5,10 +5,13 @@ import styled from "styled-components";
 import { useProductsContext } from "../context/products_context";
 import { useCartContext } from "../context/cart_context";
 import { useUserContext } from "../context/user_context";
+import { AiOutlineLogout } from "react-icons/ai";
 
 const CartButtons = () => {
 	const { closeSidebar } = useProductsContext();
 	const { totalItems } = useCartContext();
+	const { loginWithRedirect, myUser, isAuthenticated, logout } =
+		useUserContext();
 
 	return (
 		<Wrapper className='cart-btn-wrapper'>
@@ -19,9 +22,28 @@ const CartButtons = () => {
 					<span className='cart-value'>{totalItems}</span>
 				</span>
 			</Link>
-			<button type='button' className='auth-btn'>
-				Login <FaUserPlus />
-			</button>
+			{/* toggle user Login/Logout based on is Auth */}
+			{!isAuthenticated ? (
+				<button
+					onClick={loginWithRedirect}
+					type='button'
+					className='auth-btn'
+				>
+					LogIn <FaUserPlus />
+				</button>
+			) : (
+				<button
+					onClick={() =>
+						logout({
+							returnTo: window.location.origin,
+						})
+					}
+					type='button'
+					className='auth-btn'
+				>
+					LogOut <FaUserMinus />
+				</button>
+			)}
 		</Wrapper>
 	);
 };

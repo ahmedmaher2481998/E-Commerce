@@ -13,7 +13,6 @@ const Sort = () => {
 		setListView,
 	} = useFilterContext();
 
-	useEffect(() => {}, []);
 	return (
 		<Wrapper>
 			<div className='btn-container'>
