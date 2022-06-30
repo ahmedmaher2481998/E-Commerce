@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Hero, PageHero } from "../components";
+import { PageHero } from "../components";
 import aboutImg from "../assets/hero-bcg.jpeg";
 
 const AboutPage = () => {
@@ -8,7 +8,7 @@ const AboutPage = () => {
 		<main>
 			<PageHero title='About' />
 			<Wrapper className='page section section-center'>
-				<img src={aboutImg} alt='About image' />
+				<img src={aboutImg} alt='About pic' />
 				<article>
 					<h2 className='title '>
 						Our Story

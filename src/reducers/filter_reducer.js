@@ -1,4 +1,3 @@
-import { GiBrokenSkull } from "react-icons/gi";
 import {
 	LOAD_PRODUCTS,
 	SET_LISTVIEW,
@@ -58,7 +57,8 @@ const filter_reducer = (state, { type, payload }) => {
 					newState.filtered_products = newFilterProducts.sort(
 						(a, b) => b.price - a.price
 					);
-
+					break;
+				default:
 					break;
 			}
 			return newState;
@@ -76,15 +76,7 @@ const filter_reducer = (state, { type, payload }) => {
 
 		case FILTER_PRODUCTS:
 			const { all_products, filters } = newState;
-			const {
-				text,
-				company,
-				category,
-				color,
-				maxPrice,
-				price,
-				shipping,
-			} = filters;
+			const { text, company, category, color, price, shipping } = filters;
 			let temp = [...all_products];
 			if (text !== "") {
 				temp = temp.filter((p) => {
@@ -113,6 +105,8 @@ const filter_reducer = (state, { type, payload }) => {
 			}
 			temp = temp.filter((p) => p.price <= price);
 			newState.filtered_products = [...temp];
+			return newState;
+		default:
 			return newState;
 	}
 };

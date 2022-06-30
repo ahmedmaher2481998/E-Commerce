@@ -5,13 +5,11 @@ import styled from "styled-components";
 import { useProductsContext } from "../context/products_context";
 import { useCartContext } from "../context/cart_context";
 import { useUserContext } from "../context/user_context";
-import { AiOutlineLogout } from "react-icons/ai";
 
 const CartButtons = () => {
 	const { closeSidebar } = useProductsContext();
 	const { totalItems } = useCartContext();
-	const { loginWithRedirect, myUser, isAuthenticated, logout } =
-		useUserContext();
+	const { loginWithRedirect, isAuthenticated, logout } = useUserContext();
 
 	return (
 		<Wrapper className='cart-btn-wrapper'>
