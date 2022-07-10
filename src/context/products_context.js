@@ -57,6 +57,7 @@ export const ProductsProvider = ({ children }) => {
 				type: GET_SINGLE_PRODUCT_SUCCESS,
 				payload: product,
 			});
+			console.log(product);
 		} catch {
 			dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
 		}

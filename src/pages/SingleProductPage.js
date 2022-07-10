@@ -27,7 +27,8 @@ const SingleProductPage = () => {
 	useEffect(() => {
 		let myUrl = `${single_product_url}${id}`;
 		getSingleProducts(myUrl);
-	}, [id, getSingleProducts]);
+		//eslint-disable-next-line
+	}, [id]);
 
 	//automatically redirect to home page
 	useEffect(() => {

@@ -9,7 +9,11 @@ import { useCartContext } from "../context/cart_context";
 import { Link } from "react-router-dom";
 
 const CheckoutPage = () => {
-	return <h4>checkout page</h4>;
+	return (
+		<>
+			<StripeCheckout />
+		</>
+	);
 };
 //eslint-disable-next-line
 const Wrapper = styled.div``;
