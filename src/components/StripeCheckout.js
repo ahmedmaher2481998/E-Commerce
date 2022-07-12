@@ -53,8 +53,8 @@ const CheckoutForm = () => {
 				"/.netlify/functions/create-payment",
 				JSON.stringify({ cart, shippingFee, totalAmount })
 			);
-			console.log(cart, totalAmount, shippingFee);
-			console.log(data.clientSecret);
+			// console.log(cart, totalAmount, shippingFee);
+			console.log(data);
 			setClientSecret(data.clientSecret);
 		} catch (error) {
 			console.log(error.response);
