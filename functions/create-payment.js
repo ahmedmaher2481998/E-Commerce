@@ -14,7 +14,6 @@ exports.handler = async (event, context) => {
 				currency: "usd",
 				payment_method_types: ["card"],
 			});
-			// console.log("*********", payment);
 			return {
 				statusCode: 200,
 				body: JSON.stringify({ clientSecret: payment.client_secret }),
