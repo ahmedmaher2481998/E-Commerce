@@ -1,4 +1,4 @@
-//acess .netlify/functions/create-payment
+//access .netlify/functions/create-payment
 exports.handler = async (event, context) => {
 	require("dotenv").config();
 	const stripe = require("stripe")(process.env.REACT_APP_STRIPE_SECRET_KEY);
