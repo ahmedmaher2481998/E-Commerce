@@ -8,7 +8,7 @@ const Footer = () => {
 				{new Date().getFullYear()}
 				<span> ComfySloth</span>
 			</h5>
-			<h5> All rigths are resrved</h5>
+			<h5> All rights are reserved</h5>
 		</Wrapper>
 	);
 };

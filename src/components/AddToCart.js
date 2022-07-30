@@ -37,9 +37,7 @@ const AddToCart = ({ product }) => {
 								key={i}
 								style={{ backgroundColor: color }}
 								onClick={() => setMainColor(color)}
-								className={`color-btn ${
-									mainColor === color ? "active" : null
-								}`}
+								className={`color-btn ${mainColor === color ? "active" : null}`}
 							>
 								{mainColor === color ? <FaCheck /> : null}
 							</button>
@@ -60,7 +58,7 @@ const AddToCart = ({ product }) => {
 						addToCart(id, mainColor, amount, product);
 					}}
 				>
-					Addt To Cart
+					Add To Cart
 				</Link>
 			</div>
 		</Wrapper>
