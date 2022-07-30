@@ -1,7 +1,5 @@
 ## Notes
 
-#### Older React Version
+## fixes
 
-#### Current React Version
-
-#### Alternative fix
+1. local storage issue
