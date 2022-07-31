@@ -2,10 +2,16 @@
 
 <br>
 
-<h3>
+![](https://img.shields.io/github/issues/ahmedmaher2481998/e-commerce)
+![](https://img.shields.io/github/forks/ahmedmaher2481998/e-commerce)
+![](https://img.shields.io/github/stars/ahmedmaher2481998/e-commerce)
+![](https://img.shields.io/github/license/ahmedmaher2481998/e-commerce)
+![](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fahmedmaher2481998%2Fe-commerce)
+
+<h4>
 ComfySloth is an E-commerce Website for selling furniture,powered by React  
 ,and consumes json data from a Api endpoint,the app has sing in/out with auth0, persist cart data using localStorage browser api,and use react Context with redux pattern to manage the app state .
-</h3>
+</h4>
 <br>
 
 <a href='https://comfy-sloth-maher.netlify.app/' target="_blank" style='text-decoration: none;font-weight: bolder;font-style: italic;font-size:30px;'>Live Version</a>
