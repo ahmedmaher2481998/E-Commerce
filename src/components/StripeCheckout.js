@@ -39,7 +39,7 @@ const CheckoutForm = () => {
 	//stripe state vars
 
 	const [succeeded, setSucceeded] = useState(false);
-	const [error, seterror] = useState(null);
+	const [error, setError] = useState(null);
 	const [processing, setProcessing] = useState("");
 	const [disabled, setDisabled] = useState(true);
 	const [clientSecret, setClientSecret] = useState("");
@@ -66,7 +66,7 @@ const CheckoutForm = () => {
 	}, []);
 	const handleChange = async (event) => {
 		setDisabled(event.empty);
-		seterror(event.error ? event.error.message : null);
+		setError(event.error ? event.error.message : null);
 	};
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -77,11 +77,11 @@ const CheckoutForm = () => {
 			},
 		});
 		if (payload.error) {
-			seterror(`Payment Failed ${payload.error.message}`);
+			setError(`Payment Failed ${payload.error.message}`);
 			setProcessing(false);
 		} else {
 			setSucceeded(true);
-			seterror(null);
+			setError(null);
 			setProcessing(false);
 			setTimeout(() => {
 				clearCart();
