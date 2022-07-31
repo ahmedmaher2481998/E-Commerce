@@ -3,7 +3,8 @@ exports.handler = async (event, context) => {
 	require("dotenv").config();
 	const stripe = require("stripe")(process.env.REACT_APP_STRIPE_SECRET_KEY);
 	if (event.body) {
-		console.log("This is the body ", JSON.parse(event.body));
+		if (process.env.NODE_ENV === "development")
+			console.log("This is the body ", JSON.parse(event.body));
 		const { cart, totalAmount, shippingFee } = JSON.parse(event.body);
 		const calculateOrderAmount = () => {
 			return shippingFee + totalAmount;
