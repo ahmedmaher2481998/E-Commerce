@@ -8,7 +8,7 @@ ComfySloth is an E-commerce Website for selling furniture,powered by React
 </h3>
 <br>
 
-<a href='https://comfy-sloth-maher.netlify.app/' style='text-decoration: none;font-weight: bolder;font-style: italic;font-size:30px;'>Live Version</a>
+<a href='https://comfy-sloth-maher.netlify.app/' target='_blank' style='text-decoration: none;font-weight: bolder;font-style: italic;font-size:30px;'>Live Version</a>
 
 ## features
 
