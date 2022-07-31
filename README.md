@@ -1,5 +1,6 @@
 # ComfySloth
 
+[![open in vs Code ](https://miro.medium.com/max/480/0*q_2SlZs2OUPK0Ujv.png)](https://vscode.dev/github/ahmedmaher2481998/e-commerce)
 <br>
 
 ![](https://img.shields.io/github/issues/ahmedmaher2481998/e-commerce)
