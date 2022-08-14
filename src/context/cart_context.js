@@ -27,8 +27,8 @@ const CartContext = React.createContext();
 
 export const CartProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
-
-	const addToCart = (id, color, amount, product) => {
+	//add item to cart
+	const addToCart = ({ id, color, amount, product }) => {
 		dispatch({
 			type: ADD_TO_CART,
 			payload: {
@@ -39,11 +39,11 @@ export const CartProvider = ({ children }) => {
 			},
 		});
 	};
-
+	//remove item from cart
 	const removeItem = (id) => {
 		dispatch({ type: REMOVE_CART_ITEM, payload: { id } });
 	};
-
+	//inc/dec the amount
 	const toggleAmount = (id, value) => {
 		dispatch({
 			type: TOGGLE_CART_ITEM_AMOUNT,
@@ -53,15 +53,16 @@ export const CartProvider = ({ children }) => {
 			},
 		});
 	};
-
+	//clear all products in the  cart
 	const clearCart = () => {
 		dispatch({ type: CLEAR_CART });
 	};
 
 	useEffect(() => {
-		dispatch({ type: COUNT_CART_TOTALS });
 		localStorage.setItem("cart", JSON.stringify(state.cart));
-	}, [state.cart]);
+		dispatch({ type: COUNT_CART_TOTALS });
+	}, [state.cart.length, state.cart]);
+
 	return (
 		<CartContext.Provider
 			value={{
@@ -76,7 +77,7 @@ export const CartProvider = ({ children }) => {
 		</CartContext.Provider>
 	);
 };
-// make sure use
+// getting the context used
 export const useCartContext = () => {
 	return useContext(CartContext);
 };

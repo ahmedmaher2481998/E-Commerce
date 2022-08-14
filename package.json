@@ -2,6 +2,7 @@
 	"name": "store",
 	"version": "0.1.0",
 	"private": true,
+	"license": "MIT",
 	"dependencies": {
 		"@auth0/auth0-react": "^1.2.0",
 		"@stripe/react-stripe-js": "^1.1.2",
@@ -10,16 +11,18 @@
 		"@testing-library/react": "^11.1.2",
 		"@testing-library/user-event": "^12.2.2",
 		"axios": "^0.21.1",
+		"code": "^5.2.4",
 		"dotenv": "^8.2.0",
 		"netlify": "^6.0.12",
-		"react": "^17.0.1",
-		"react-dom": "^17.0.1",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-scripts": "3.4.3",
 		"react-icons": "^3.11.0",
 		"react-router-dom": "^5.2.0",
-		"react-scripts": "4.0.0",
 		"stripe": "^8.130.0",
 		"styled-components": "^5.2.1",
-		"web-vitals": "^0.2.4"
+		"web-vitals": "^0.2.4",
+		"webpack": "4.42.0"
 	},
 	"scripts": {
 		"start": "react-scripts start",

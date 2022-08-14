@@ -29,7 +29,7 @@ const Filters = () => {
 			<div className='content'>
 				<form onSubmit={(e) => e.preventDefault()}>
 					{/* search input  */}
-					<div className='forn-control'>
+					<div className='form-control'>
 						<input
 							type='text'
 							name='text'
@@ -50,11 +50,7 @@ const Filters = () => {
 											onClick={updateFilters}
 											name='category'
 											type='button'
-											className={`${
-												category === cat
-													? "active"
-													: null
-											}`}
+											className={`${category === cat ? "active" : null}`}
 										>
 											{cat}
 										</button>
@@ -65,7 +61,7 @@ const Filters = () => {
 						{/* end of Categories */}
 						{/* company*/}
 						<div className='form-control'>
-							<h5>compay</h5>
+							<h5>company</h5>
 							<select
 								name='company'
 								value={company}
@@ -94,9 +90,7 @@ const Filters = () => {
 											data-color='all'
 											onClick={updateFilters}
 											className={`${
-												color === "all"
-													? "all-btn active"
-													: "all-btn"
+												color === "all" ? "all-btn active" : "all-btn"
 											}`}
 											style={{ backgroundColor: `${c}` }}
 										>
@@ -146,11 +140,7 @@ const Filters = () => {
 						{/* shipping end */}
 					</div>
 				</form>
-				<button
-					type='button '
-					className='clear-btn'
-					onClick={clearFilters}
-				>
+				<button type='button ' className='clear-btn' onClick={clearFilters}>
 					Clear filters
 				</button>
 			</div>

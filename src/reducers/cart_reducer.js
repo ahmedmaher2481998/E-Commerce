@@ -11,14 +11,15 @@ const cart_reducer = (state, { type, payload }) => {
 	switch (type) {
 		case ADD_TO_CART:
 			const { id, color, amount, product } = payload;
-			let tempItme = newState.cart.find((i) => i.id === id + color);
-			if (tempItme) {
+			let tempItem = newState.cart.find((i) => i.id === id + color);
+			if (tempItem) {
 				const tempCart = newState.cart.map((i) => {
 					if (i.id === id + color) {
 						let newAmount = i.amount + amount;
 						if (newAmount > i.max) {
 							newAmount = i.max;
 						}
+						i.amount = newAmount;
 						return i;
 					} else return i;
 				});
@@ -35,14 +36,13 @@ const cart_reducer = (state, { type, payload }) => {
 				};
 				newState.cart.push(newItem);
 			}
+			// localStorage.setItem("cart", JSON.stringify(newState.cart));
 			return newState;
 		case CLEAR_CART:
 			newState.cart = [];
 			return newState;
 		case REMOVE_CART_ITEM:
-			newState.cart = newState.cart.filter(
-				(item) => item.id !== payload.id
-			);
+			newState.cart = newState.cart.filter((item) => item.id !== payload.id);
 			return newState;
 		case TOGGLE_CART_ITEM_AMOUNT:
 			newState.cart = newState.cart.map((item) => {

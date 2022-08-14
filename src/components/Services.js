@@ -12,9 +12,8 @@ const Services = () => {
 						built only for you
 					</h1>
 					<p>
-						Lorem ipsum dolor sit amet consectetur, adipisicing
-						elit. Commodi enim quibusdam laudantium laboriosam quis
-						consequuntur maiores cum quam ullam praesentium.
+						We always strive to work for your comfort and to for a product that
+						you are proud of,To offer you an unique experience.
 					</p>
 				</article>
 				<div className='services-center'>

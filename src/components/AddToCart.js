@@ -10,7 +10,7 @@ const AddToCart = ({ product }) => {
 
 	const { addToCart } = useCartContext();
 
-	const [mainColor, setMainColor] = useState(colors[0]);
+	const [color, setColor] = useState(colors[0]);
 	const [amount, setAmount] = useState(1);
 
 	const increase = () => {
@@ -31,17 +31,15 @@ const AddToCart = ({ product }) => {
 			<div className='colors'>
 				<span>Colors: </span>
 				<div>
-					{colors.map((color, i) => {
+					{colors.map((currColor, i) => {
 						return (
 							<button
 								key={i}
-								style={{ backgroundColor: color }}
-								onClick={() => setMainColor(color)}
-								className={`color-btn ${
-									mainColor === color ? "active" : null
-								}`}
+								style={{ backgroundColor: currColor }}
+								onClick={() => setColor(currColor)}
+								className={`color-btn ${currColor === color ? "active" : null}`}
 							>
-								{mainColor === color ? <FaCheck /> : null}
+								{currColor === color ? <FaCheck /> : null}
 							</button>
 						);
 					})}
@@ -57,10 +55,10 @@ const AddToCart = ({ product }) => {
 					to={"/cart"}
 					className='btn'
 					onClick={() => {
-						addToCart(id, mainColor, amount, product);
+						addToCart({ id, color, amount, product });
 					}}
 				>
-					Addt To Cart
+					Add To Cart
 				</Link>
 			</div>
 		</Wrapper>
